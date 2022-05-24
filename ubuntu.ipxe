@@ -23,8 +23,8 @@ set iso ${base}/ubuntu-22.04-live-server-amd64.iso
 goto boot
 
 :boot
-kernel ${base}/vmlinuz url=${iso} ip=dhcp                 || goto failed
-initrd ${base}/initrd                                     || goto failed
+kernel ${base}/vmlinuz url=${iso} ip=dhcp initrd=initrd.magic    || goto failed
+initrd ${base}/initrd                                            || goto failed
 boot || goto failed
 goto welcome
 
