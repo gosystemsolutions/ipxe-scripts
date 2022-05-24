@@ -10,7 +10,6 @@ echo
 echo Source: github.com/gosystemsolutions/ipxe-scripts
 echo
 echo
-echo
 echo goSystem iPXE
 echo =============
 echo
@@ -21,9 +20,6 @@ echo The modifications and source code of the goSystem iPXE can be found on GitH
 echo
 echo Source: github.com/gosystemsolutions/ipxe
 echo Original: github.com/ipxe/ipxe
-echo
-echo
-echo
 echo
 echo
 echo Press any key to continue...
