@@ -1,0 +1,47 @@
+#!ipxe
+
+set scripts http://192.168.122.1:8080/scripts
+set roms http://192.168.122.1:8080/images
+
+console --picture ${scripts}/img/pxe.png --left 32 --right 32 --top 80 --bottom 32
+
+:welcome
+menu goSystem Boot Environment
+item --gap Operating Systems
+item archlinux  Arch Linux
+item windows    Microsoft Windows
+item ubuntu     Ubuntu Linux (and derivatives)
+item
+item --gap goSystem
+item about      About
+item refresh    Refresh Menu
+item shell      iPXE Shell
+choose selected || goto cancelled
+goto ${selected} || goto failed
+
+:refresh
+chain -ar /index.ipxe
+goto welcome
+
+:cancelled
+echo
+echo Menu Cancelled
+goto shell
+
+:failed
+echo
+echo Failed to boot ${selected}!
+goto shell
+
+:shell
+echo You are now within the iPXE Shell.
+echo To return to the goSystem PXE Environment, enter the "exit" command.
+shell
+goto welcome
+
+:archlinux
+:windows
+:ubuntu
+:about
+chain -a ${selected}.ipxe
+goto welcome

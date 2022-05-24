@@ -1,0 +1,31 @@
+#!ipxe
+
+echo
+echo goSystem Pre-execution Environment
+echo ==================================
+echo
+echo A selection of iPXE scripts for net-booting operating systems and other tools
+echo helpful for goSystem machines. 
+echo 
+echo Source: github.com/gosystemsolutions/ipxe-scripts
+echo
+echo
+echo
+echo goSystem iPXE
+echo =============
+echo
+echo The goSystem iPXE is a modification of iPXE from iPXE.org, licenced for use
+echo under the GNU General Public Licence v2
+echo
+echo The modifications and source code of the goSystem iPXE can be found on GitHub.
+echo
+echo Source: github.com/gosystemsolutions/ipxe
+echo Original: github.com/ipxe/ipxe
+echo
+echo
+echo
+echo
+echo
+echo Press any key to continue...
+
+prompt

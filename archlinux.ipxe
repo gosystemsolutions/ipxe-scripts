@@ -1,0 +1,20 @@
+#!ipxe
+
+:welcome
+menu Arch Linux
+item --gap Options
+item back          Back
+item
+item --gap Arch Linux
+item 2022.05.01    2022-05-01 (1st May 2022)
+choose selected || goto back
+goto ${selected}
+
+:2022.05.01
+set base ${roms}/archlinux/${selected}
+kernel ${base}/arch/boot/x86_64/vmlinuz-linux archiso_http_srv=${base}/ ip=dhcp     || goto failed
+initrd ${base}/arch/boot/x86_64/initramfs-linux.img                                 || goto failed
+boot || goto failed
+goto welcome
+
+:back

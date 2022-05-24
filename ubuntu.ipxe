@@ -1,0 +1,31 @@
+#!ipxe
+
+:welcome
+menu Ubuntu
+item --gap Options
+item back           Back
+item
+item --gap          Ubuntu Server
+item server2204     Ubuntu 22.04
+item
+item --gap          Ubuntu Desktop
+item 2204           Ubuntu 22.04
+choose selected || goto back
+set base ${roms}/ubuntu/${selected}
+goto ${selected}
+
+:2204
+set iso ${base}/ubuntu-22.04-desktop-amd64.iso
+goto boot
+
+:server2204
+set iso ${base}/ubuntu-22.04-live-server-amd64.iso
+goto boot
+
+:boot
+kernel ${base}/vmlinuz url=${iso} ip=dhcp                 || goto failed
+initrd ${base}/initrd                                     || goto failed
+boot || goto failed
+goto welcome
+
+:back

@@ -1,0 +1,28 @@
+#!ipxe
+
+:welcome
+menu Microsoft Windows
+item --gap Options
+item back          Back
+item
+item --gap Windows Server
+item 2022/20348     Windows Server 2022 (20348) English United States
+item
+item --gap Windows
+item 10/20h2        Windows 10 (20H2) English International
+item 11/22h2        Windows 11 (20H2) English International
+choose selected || goto back
+goto ${selected}
+
+:2022/20348
+:10/20h2
+:11/22h2
+:invalid
+kernel ${roms}/windows/wimboot
+initrd ${roms}/windows/${selected}/boot/bcd          BCD      || goto failed
+initrd ${roms}/windows/${selected}/boot/boot.sdi     boot.sdi || goto failed
+initrd ${roms}/windows/${selected}/sources/boot.wim  boot.wim || goto failed
+boot || goto failed
+goto welcome
+
+:back
