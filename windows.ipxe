@@ -18,7 +18,7 @@ goto ${selected}
 :10/20h2
 :11/22h2
 :invalid
-kernel ${roms}/windows/wimboot
+kernel ${roms}/windows/wimboot gui
 initrd ${roms}/windows/${selected}/boot/bcd          BCD      || goto failed
 initrd ${roms}/windows/${selected}/boot/boot.sdi     boot.sdi || goto failed
 initrd ${roms}/windows/${selected}/sources/boot.wim  boot.wim || goto failed

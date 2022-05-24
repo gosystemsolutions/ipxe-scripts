@@ -12,8 +12,8 @@ goto ${selected}
 
 :2022.05.01
 set base ${roms}/archlinux/${selected}
-kernel ${base}/arch/boot/x86_64/vmlinuz-linux archiso_http_srv=${base}/ ip=dhcp     || goto failed
-initrd ${base}/arch/boot/x86_64/initramfs-linux.img                                 || goto failed
+kernel ${base}/arch/boot/x86_64/vmlinuz-linux archiso_http_srv=${base}/ ip=dhcp initrd=initrd.magic     || goto failed
+initrd ${base}/arch/boot/x86_64/initramfs-linux.img                                                     || goto failed
 boot || goto failed
 goto welcome
 
